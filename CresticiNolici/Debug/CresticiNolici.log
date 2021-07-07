@@ -1,3 +1,3 @@
 ﻿  main.cpp
-C:\Users\schug\source\repos\CresticiNolici\CresticiNolici\main.cpp(14,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\schug\source\repos\CresticiNolici\CresticiNolici\main.cpp(13,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
   CresticiNolici.vcxproj -> C:\Users\schug\source\repos\CresticiNolici\Debug\CresticiNolici.exe

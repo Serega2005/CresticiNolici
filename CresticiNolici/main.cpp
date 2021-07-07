@@ -1,7 +1,6 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <conio.h>
 using namespace std;	
-
 
 #define OFFSET_TOP "\n\n\n\n\n\n\n\n"
 #define OFFSET_LEFT "\t\t\t\t\t\t"
@@ -13,14 +12,13 @@ void Check(char field[], const int n, char player);
 void main()
 {
 	setlocale(LC_ALL, "Russian");
-	do
+	do 
 	{
 	    const int n = 9;
 	    char field[n] = {};
 		PrintField(field, n, '0');
-		cout << "Äëÿ âûõîä àíèæìèòå Escape, äëÿ òîãî ÷òîáû ñûãðàòü åù¸ ðàç, íàæìèòå ëþáóþ êëàâèøó.\n";
+		cout << "Ð”Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´ Ð°Ð½Ð¸Ð¶Ð¼Ð¸Ñ‚Ðµ Escape, Ð´Ð»Ñ Ñ‚Ð¾Ð³Ð¾ Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÑ‹Ð³Ñ€Ð°Ñ‚ÑŒ ÐµÑ‰Ñ‘ Ñ€Ð°Ð·, Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ Ð»ÑŽÐ±ÑƒÑŽ ÐºÐ»Ð°Ð²Ð¸ÑˆÑƒ.\n";
 	} while (_getch()!=27);
-	//for (int i = 0; i < n; i++)field[i] = i + 49;
 }
 
 void PrintField(char field[], const int n, char player)
@@ -40,7 +38,6 @@ void PrintField(char field[], const int n, char player)
 		if (i != 0)cout << "--- --- ---";
 		cout << endl;
 	}
-	//Move(field, n, player);
 	Check(field, n, player);
 }
 
@@ -55,34 +52,32 @@ void Move(char field[], const int n, char player)
 		{
 			key = _getch();
 			if (key == 27)return;
-			if ((key < '1' || key > '9') && key != 27)cout << "Íàæèìàé íà êíîïêè âíèìàòåëüíåé!!!\n";
-		} while ((key < '1' || key > '9') /*&& key != 27*/);
+			if ((key < '1' || key > '9') && key != 27)cout << "ÐÐ°Ð¶Ð¸Ð¼Ð°Ð¹ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÐ¸ Ð²Ð½Ð¸Ð¼Ð°Ñ‚ÐµÐ»ÑŒÐ½ÐµÐ¹!!!\n";
+		} while ((key < '1' || key > '9'));
 		if (field[key - 49] != 0)
 		{
 			busy = true;
-			cout << "Êëåòêà çàíÿòà!" << endl;
+			cout << "ÐšÐ»ÐµÑ‚ÐºÐ° Ð·Ð°Ð½ÑÑ‚Ð°!" << endl;
 		}
 		else
 		field[key - 49] = player;
 	} while (busy);
-	/*if (player == 'X')PrintField(field, n, 'O');
-	else PrintField(field, n, 'X');*/
 	PrintField(field, n, player);
 }
 
 void Check(char field[], const int n, char player)
 {
 	bool game_over = false;
-//ïðîâåðêà äèàãîíàëåé
+//Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð¸Ð°Ð³Ð¾Ð½Ð°Ð»ÐµÐ¹
 	if(
 		field[0] == field[4] && field[4] == field[8] && field[8] != 0 ||
 		field[2] == field[4] && field[4] == field[6] && field[6] != 0
 		) 
 		game_over = true;
-	//ïðîâåðêà ãîðèçîíòàëåé
+	//Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÐµÐ¹
 	for (int i = 0; i < 7; i += 3)
 		if (field[i] == field[i + 1] && field[i] == field[i + 2] && field[i] != 0)game_over=true;
-	//ïðîâåðêà âåðòèêàëåé
+	//Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð²ÐµÑ€Ñ‚Ð¸ÐºÐ°Ð»ÐµÐ¹
 	for (int i = 0; i < 3; i++)
 		if (field[i] == field[i + 3] && field[i] == field[i + 6] && field[i] != 0)game_over = true;
 
@@ -97,7 +92,7 @@ void Check(char field[], const int n, char player)
 	}
 	if (!game_over && draw)
 	{
-		cout << "Íè÷üÿ!)" << endl;
+		cout << "ÐÐ¸Ñ‡ÑŒÑ!)" << endl;
 		return;
 	}
 
@@ -108,9 +103,7 @@ void Check(char field[], const int n, char player)
 	}
 	else 
 	{
-		//PrintField(field, n, player);
 		if (player == 'X')Move(field, n, '0');
 		else Move(field, n, 'X');
 	}
-	
 }
